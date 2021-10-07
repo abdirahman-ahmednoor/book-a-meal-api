@@ -1,0 +1,71 @@
+{% load static %}
+
+        <div class="banner">
+			<div class="container">
+				<div class="header">
+					<div class="logo">
+						<h1><a href="/">BOOKING A MEAL</a></h1>
+					</div>
+					<div class="top-nav">
+						<nav class="navbar navbar-default">
+								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">Menu
+								</button>
+							<!-- Collect the nav links, forms, and other content for toggling -->
+							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+								<ul class="nav navbar-nav">
+									<li><a class="active" href="{% url 'booking:index' %}">Home</a></li>
+									<li><a href="{% url 'booking:menu' %}">Menu</a></li>
+									{% if user.is_authenticated %}
+									<li><a href="{% url 'booking:dashboard_admin' %}">Dashboard</a></li>
+									
+									{% else %}
+									
+									{% endif %}
+									<div class="clearfix"> </div>
+								</ul>
+							</div>
+						</nav>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="banner-info">
+					<h2>Tasty food served at your doorstep</h2>
+					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum beatae est itaque suscipit. Sit minima ad dicta officiis corporis similique.</p>
+				</div>
+				<div class="banner-grads">
+					<div class="col-md-3 banner-grad">
+						<a href="">
+							<div class="banner-grad-img">
+								<img src="" alt="" />
+								<h4>Iloilo Food</h4>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-3 banner-grad">
+						<a href="">
+							<div class="banner-grad-img">
+								<img src="" alt="" />
+								<h4> Food</h4>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-3 banner-grad">
+						<a href="">
+							<div class="banner-grad-img">
+								<img src="" alt="" />
+								<h4> Food</h4>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-3 banner-grad">
+						<a href="">
+							<div class="banner-grad-img">
+								<img src="" alt="" />
+								<h4> Food</h4>
+							</div>
+						</a>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+		</div>

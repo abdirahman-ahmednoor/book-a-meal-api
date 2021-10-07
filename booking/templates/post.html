@@ -1,0 +1,16 @@
+{% load bootstrap4 %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <form action="{% url 'booking:post' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% bootstrap_form post_form %}
+                <input type="submit" class="btn btn-success link" value="POST">
+            </form>
+        </div>
+    </div>
+</div>
+{{ form.media }}
+{% endblock %}
