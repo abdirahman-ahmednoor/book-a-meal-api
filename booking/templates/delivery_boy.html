@@ -59,7 +59,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {% for order in orders %}
+                                    {% for orders in order %}
                                     <tr>
                                         <td>{{order.id}}</td>
                                         <td>{{order.order.customer.customer.first_name}} {{order.order.customer.customer.last_name}}</td>

@@ -17,6 +17,12 @@ from django.utils import timezone
 # from reportlab.pdfgen import canvas
 from .models import Customer, Comment, Order, Food, Data, Cart, OrderContent, Staff, DeliveryBoy
 from . forms import PostForm
+from django.shortcuts import render
+from rest_framework import generics
+from .models import Post,Customer
+# from .permissions import IsAuthorOrReadOnly
+from .serializers import *
+
 
 
 @login_required
@@ -308,7 +314,7 @@ def placeOrder(request):
 @login_required
 def my_orders(request):
     user = User.objects.get(id=request.user.id)
-    customer = Customer.objects.get(customer=user)
+    customer = Customer.objects.filter(customer=user)
     orders = Order.objects.filter(customer=customer)
     return render(request, 'orders.html', {'orders': orders})
 
@@ -340,3 +346,86 @@ def post(request):
   else:
     post_form = PostForm()
   return render(request,'post.html',{"post_form":post_form})
+
+
+# APIView
+
+class PostList(generics.ListCreateAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+class PostDetail(generics.RetrieveUpdateDestroyAPIView):
+    # permission_classes = (IsAuthorOrReadOnly,)
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
+class CustomerList(generics.ListCreateAPIView):
+    queryset = Customer.objects.all()
+    serializer_class = CustomerSerializer
+class CustomerDetail(generics.RetrieveUpdateDestroyAPIView):
+    # permission_classes = (IsAuthorOrReadOnly,)
+    queryset = Customer.objects.all()
+    serializer_class = CustomerSerializer
+
+class OrderList(generics.ListCreateAPIView):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+class OrderDetail(generics.RetrieveUpdateDestroyAPIView):
+    # permission_classes = (IsAuthorOrReadOnly,)
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+
+class StaffList(generics.ListCreateAPIView):
+    queryset = Staff.objects.all()
+    serializer_class = StaffSerializer
+class StaffDetail(generics.RetrieveUpdateDestroyAPIView):
+    # permission_classes = (IsAuthorOrReadOnly,)
+    queryset = Staff.objects.all()
+    serializer_class = StaffSerializer    
+
+class FoodList(generics.ListCreateAPIView):
+    queryset = Food.objects.all()
+    serializer_class = FoodSerializer
+class FoodDetail(generics.RetrieveUpdateDestroyAPIView):
+    # permission_classes = (IsAuthorOrReadOnly,)
+    queryset = Food.objects.all()
+    serializer_class = FoodSerializer
+
+class CommentList(generics.ListCreateAPIView):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
+    # permission_classes = (IsAuthorOrReadOnly,)
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer    
+
+class DataList(generics.ListCreateAPIView):
+    queryset = Data.objects.all()
+    serializer_class = DataSerializer
+class DataDetail(generics.RetrieveUpdateDestroyAPIView):
+    # permission_classes = (IsAuthorOrReadOnly,)
+    queryset = Data.objects.all()
+    serializer_class = DataSerializer    
+
+class OrderContentList(generics.ListCreateAPIView):
+    queryset = OrderContent.objects.all()
+    serializer_class = OrderContentSerializer
+class OrderContentDetail(generics.RetrieveUpdateDestroyAPIView):
+    # permission_classes = (IsAuthorOrReadOnly,)
+    queryset = OrderContent.objects.all()
+    serializer_class = OrderContentSerializer   
+
+class CartList(generics.ListCreateAPIView):
+    queryset = Cart.objects.all()
+    serializer_class = CartSerializer
+class CartDetail(generics.RetrieveUpdateDestroyAPIView):
+    # permission_classes = (IsAuthorOrReadOnly,)
+    queryset = Cart.objects.all()
+    serializer_class = CartSerializer     
+
+class DeliveryBoyList(generics.ListCreateAPIView):
+    queryset = DeliveryBoy.objects.all()
+    serializer_class = DeliveryBoySerializer
+class DeliveryBoyDetail(generics.RetrieveUpdateDestroyAPIView):
+    # permission_classes = (IsAuthorOrReadOnly,)
+    queryset = DeliveryBoy.objects.all()
+    serializer_class = DeliveryBoySerializer   

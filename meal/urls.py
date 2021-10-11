@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(('booking.urls', 'booking'), namespace='booking')),
     path('accounts/', include('django.contrib.auth.urls')),
+    
 ]

@@ -14,6 +14,9 @@ from pathlib import Path
 import django_heroku
 import dj_database_url 
 from decouple import config,Csv
+import cloudinary
+import cloudinary.api
+import cloudinary.uploader
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -43,8 +46,19 @@ INSTALLED_APPS = [
     'booking',
     'bootstrap4',
     'mathfilters',
+    'rest_framework',
+    'cloudinary',
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    # 'DEFAULT_PERMISSION_CLASSES': [
+    #     'rest_framework.permissions.IsAuthenticated',
+    # ]
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -183,3 +197,9 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'abdirahman.noor09@gmail.com'
 EMAIL_HOST_PASSWORD = 'maziwa'
 EMAIL_PORT = 465
+
+cloudinary.config(
+   cloud_name = 'somken-solution-limited',
+   api_key = '844774271144255',
+   api_secret = '8sA1D1HIN1tO3NQrDGeiRdPx5Y4'
+ )

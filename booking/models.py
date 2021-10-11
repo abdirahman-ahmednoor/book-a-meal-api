@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
 class Customer(models.Model):
     pending = 'Pending'
@@ -93,11 +94,11 @@ class Order(models.Model):
         return self.customer.__str__()
 
 class Food(models.Model):
-    indian = 'Negros Best Food'
-    south = 'Manila Best Food'
-    gujarati = 'Cebu Best Food'
-    punjabi = 'Iloilo Best Food'
-    fast = 'Aklan Food'
+    indian = 'Best Food'
+    south = 'Best Food'
+    gujarati = 'Best Food'
+    punjabi = 'Best Food'
+    fast = 'Food'
     
     COURSE = (
         (indian,indian),
@@ -122,7 +123,7 @@ class Food(models.Model):
     base_price = models.FloatField()
     sale_price = models.FloatField(default=base_price)
     discount = models.DecimalField(default=0, decimal_places=2, max_digits=5)
-    image = models.FileField(blank=True, null =True)
+    image = CloudinaryField('image')
     num_order = models.IntegerField(default=0)
 
     def __str__(self):
@@ -158,9 +159,10 @@ class DeliveryBoy(models.Model):
 class Post(models.Model):
   title = models.CharField(max_length=144)
   description = models.TextField()
+  image = CloudinaryField('image')
   posted_on = models.DateTimeField(auto_now_add=True)
   user = models.ForeignKey(User,on_delete = models.CASCADE)
-
+  
 
   @classmethod
   def display_postt(cls):
