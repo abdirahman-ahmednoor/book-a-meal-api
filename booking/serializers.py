@@ -11,7 +11,7 @@ class CustomerSerializer(serializers.ModelSerializer):
 
 class FoodSerializer(serializers.ModelSerializer):
     class Meta:
-        fields =('name', 'course', 'status', 'base_price', 'sale_price', 'discount', 'image', 'num_order' )
+        fields =('name', 'course', 'status', 'price', 'image', 'num_order', 'content_description', 'location')
         model = Food
 
 class StaffSerializer(serializers.ModelSerializer):
@@ -41,7 +41,7 @@ class OrderContentSerializer(serializers.ModelSerializer):
 
 class CartSerializer(serializers.ModelSerializer):
     class Meta:
-        fields =('quality','food','user')
+        fields =('food','user')
         model = Cart
 
 class DeliveryBoySerializer(serializers.ModelSerializer):

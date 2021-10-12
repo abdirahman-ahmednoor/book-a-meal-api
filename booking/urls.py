@@ -32,7 +32,8 @@ urlpatterns = [
     path('addTocart/(?P<foodID>\d+)/(?P<userID>\d+)/', views.addTocart, name='addTocart'),
     path('post/',views.post,name='post'),
     path('dashboard/delivery_boy/', views.delivery_boy, name='delivery_boy'),
-
+    
+    # APIViews
     path('<int:pk>/', PostDetail.as_view()),
     path('post/v1', PostList.as_view()),
 

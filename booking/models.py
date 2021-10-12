@@ -94,10 +94,10 @@ class Order(models.Model):
         return self.customer.__str__()
 
 class Food(models.Model):
-    indian = 'Best Food'
-    south = 'Best Food'
-    gujarati = 'Best Food'
-    punjabi = 'Best Food'
+    indian = 'Indian Food'
+    south = 'South Food'
+    gujarati = 'Gujarati Food'
+    punjabi = 'PunjabiFood'
     fast = 'Food'
     
     COURSE = (
@@ -120,10 +120,9 @@ class Food(models.Model):
     course = models.CharField(max_length = 50, choices = COURSE)
     status = models.CharField(max_length=50, choices=STATUS)
     content_description = models.TextField()
-    base_price = models.FloatField()
-    sale_price = models.FloatField(default=base_price)
-    discount = models.DecimalField(default=0, decimal_places=2, max_digits=5)
-    image = CloudinaryField('image')
+    price = models.FloatField()
+    image = models.ImageField('image')
+    location = models.CharField(max_length=200, blank=True, null=True)
     num_order = models.IntegerField(default=0)
 
     def __str__(self):

@@ -14,13 +14,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
 from django.utils import timezone
-# from reportlab.pdfgen import canvas
 from .models import Customer, Comment, Order, Food, Data, Cart, OrderContent, Staff, DeliveryBoy
 from . forms import PostForm
 from django.shortcuts import render
 from rest_framework import generics
 from .models import Post,Customer
-# from .permissions import IsAuthorOrReadOnly
 from .serializers import *
 
 
@@ -190,19 +188,18 @@ def add_food(request):
         course = request.POST['course']
         status = request.POST['status']
         content = request.POST['content']
-        base_price = request.POST['base_price']
-        discount = request.POST['discount']
-        sale_price = (100 - float(discount)) * float(base_price) / 100
+        price = request.POST['base_price']
         image = request.FILES['image']
+        location = request.POST['location']
         fs = FileSystemStorage()
         filename = fs.save(image.name, image)
 
-        if (name == "") or (course is None) or (status is None) or (content == "") or (base_price == "") or (discount == ""):
+        if (name == "") or (course is None) or (status is None) or (content == "") or (price == ""):
             foods = Food.objects.filter()
             error_msg = "Please enter valid details"
             return render(request, 'admin_temp/foods.html', {'foods': foods, 'error_msg': error_msg})
 
-        food = Food.objects.create(name=name, course=course, status=status, content_description=content, base_price=base_price, discount=discount, sale_price=sale_price, image=filename)
+        food = Food.objects.create(name=name, course=course, status=status, content_description=content, price=price, image=filename, location=location)
         food.save()
         foods = Food.objects.filter()
         success_msg = "Please enter valid details"
@@ -354,7 +351,6 @@ class PostList(generics.ListCreateAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
-    # permission_classes = (IsAuthorOrReadOnly,)
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
@@ -362,7 +358,6 @@ class CustomerList(generics.ListCreateAPIView):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
 class CustomerDetail(generics.RetrieveUpdateDestroyAPIView):
-    # permission_classes = (IsAuthorOrReadOnly,)
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
 
@@ -370,7 +365,6 @@ class OrderList(generics.ListCreateAPIView):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
 class OrderDetail(generics.RetrieveUpdateDestroyAPIView):
-    # permission_classes = (IsAuthorOrReadOnly,)
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
 
@@ -378,7 +372,6 @@ class StaffList(generics.ListCreateAPIView):
     queryset = Staff.objects.all()
     serializer_class = StaffSerializer
 class StaffDetail(generics.RetrieveUpdateDestroyAPIView):
-    # permission_classes = (IsAuthorOrReadOnly,)
     queryset = Staff.objects.all()
     serializer_class = StaffSerializer    
 
@@ -386,7 +379,6 @@ class FoodList(generics.ListCreateAPIView):
     queryset = Food.objects.all()
     serializer_class = FoodSerializer
 class FoodDetail(generics.RetrieveUpdateDestroyAPIView):
-    # permission_classes = (IsAuthorOrReadOnly,)
     queryset = Food.objects.all()
     serializer_class = FoodSerializer
 
@@ -394,7 +386,6 @@ class CommentList(generics.ListCreateAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
 class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
-    # permission_classes = (IsAuthorOrReadOnly,)
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer    
 
@@ -402,7 +393,6 @@ class DataList(generics.ListCreateAPIView):
     queryset = Data.objects.all()
     serializer_class = DataSerializer
 class DataDetail(generics.RetrieveUpdateDestroyAPIView):
-    # permission_classes = (IsAuthorOrReadOnly,)
     queryset = Data.objects.all()
     serializer_class = DataSerializer    
 
@@ -410,7 +400,6 @@ class OrderContentList(generics.ListCreateAPIView):
     queryset = OrderContent.objects.all()
     serializer_class = OrderContentSerializer
 class OrderContentDetail(generics.RetrieveUpdateDestroyAPIView):
-    # permission_classes = (IsAuthorOrReadOnly,)
     queryset = OrderContent.objects.all()
     serializer_class = OrderContentSerializer   
 
@@ -418,7 +407,6 @@ class CartList(generics.ListCreateAPIView):
     queryset = Cart.objects.all()
     serializer_class = CartSerializer
 class CartDetail(generics.RetrieveUpdateDestroyAPIView):
-    # permission_classes = (IsAuthorOrReadOnly,)
     queryset = Cart.objects.all()
     serializer_class = CartSerializer     
 
@@ -426,6 +414,5 @@ class DeliveryBoyList(generics.ListCreateAPIView):
     queryset = DeliveryBoy.objects.all()
     serializer_class = DeliveryBoySerializer
 class DeliveryBoyDetail(generics.RetrieveUpdateDestroyAPIView):
-    # permission_classes = (IsAuthorOrReadOnly,)
     queryset = DeliveryBoy.objects.all()
     serializer_class = DeliveryBoySerializer   

@@ -22,7 +22,7 @@
 								<div class="blog-left-bottom">
 									<p>{{food.content_description}}</p>
 								</div>
-								<a href="{% url 'hotel:addTocart' food.id request.user.id %}">
+								<a href="{% url 'booking:addTocart' food.id request.user.id %}">
 									<button class="btn btn-primary">Add to Cart</button>
 								</a>
 							</div>{% load static %}
@@ -49,7 +49,7 @@
                                                             <div class="blog-left-bottom">
                                                                 <p>{{food.content_description}}</p>
                                                             </div>
-                                                            <a href="{% url 'hotel:addTocart' food.id request.user.id %}">
+                                                            <a href="{% url 'booking:addTocart' food.id request.user.id %}">
                                                                 <button class="btn btn-primary">Add to Cart</button>
                                                             </a>
                                                         </div>
@@ -120,13 +120,13 @@
                                                     <div class="categories">
                                                         <h3>Categories</h3>
                                                         <ul>
-                                                            <li><a href="#">Food</a></li>
-                                                            <li><a href="#">Food</a></li>
-                                                            <li><a href="#">Food</a></li>
-                                                            <li><a href="#">Food</a></li>
-                                                            <li><a href="#">Food</a></li>
-                                                            <li><a href="#">Food</a></li>
-                                                        </ul>
+                                                            <li><a href="#">PIZZA</a></li>
+                                                            <li><a href="#">BURGER</a></li>
+                                                            <li><a href="#">BAWA BUCKET</a></li>
+                                                            <li><a href="#">STREETWISE</a></li>
+                                                            <li><a href="#">PAD THAI</a></li>
+                                                            <li><a href="#">RAMEN</a></li>
+                                                        </ul> 
                                                     </div>
                                                     <div class="categories">
                                                         <h3>Archive</h3>
