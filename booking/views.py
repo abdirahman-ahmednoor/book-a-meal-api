@@ -133,13 +133,13 @@ def confirm_delivery(request, orderID):
 def edit_food(request, foodID):
     food = Food.objects.filter(id=foodID)[0]
     if request.method == "POST":
-        if request.POST['base_price'] != "":
-            food.base_price = request.POST['base_price']
+        if request.POST['price'] != "":
+            food.price = request.POST['price']
         
-        if request.POST['discount'] != "":
-            food.discount = request.POST['discount'] 
+        # if request.POST['discount'] != "":
+        #     food.discount = request.POST['discount'] 
         
-        food.sale_price = (100 - float(food.discount))*float(food.base_price)/100
+        food.sale_price = (100 - float(food.discount))*float(food.price)/100
 
         status = request.POST.get('disabled')
         print(status)

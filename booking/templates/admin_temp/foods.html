@@ -55,13 +55,10 @@
                                     <input type="text" class="form-control" id="content" name="content">
                                 </div>
                                 <div class="form-group">
-                                    <label for="base_price">Base Price:</label>
-                                    <input type="number" class="form-control" id="base_price" name="base_price" value=0>
+                                    <label for="price">Price:</label>
+                                    <input type="number" class="form-control" id="price" name="price" value=0>
                                 </div>
-                                <div class="form-group">
-                                    <label for="discount">Discount(%):</label>
-                                    <input type="number" class="form-control" id="discount" name="discount" value=0>
-                                </div>
+                               
                                 <div class="form-group">
                                     <label for="image">Image:</label>
                                     <input type="file" class="form-control" id="image" name="image">
@@ -91,9 +88,7 @@
                                 <th>Name</th>
                                 <th>Course</th>
                                 <th>Description</th>
-                                <th>Base Price</th>
-                                <th>Discount(%)</th>
-                                <th>Sale Price</th>
+                                <th>Price</th>
                                 <th>Status</th>
                                 <th>Expense/Sales</th>
                             </tr>
@@ -105,9 +100,8 @@
                                 <td>{{food.name}}</td>
                                 <td>{{food.course}}</td>
                                 <td>{{food.content_description|truncatechars:150}}</td>
-                                <td>{{food.base_price}}</td>
-                                <td>{{food.discount}} %</td>
-                                <td>{{food.sale_price}}</td>
+                                <td>{{food.price}}</td>
+                               
                                 <td>{% if food.status == 'Enabled' %}
                                     <span class="label label-success">Enabled</span>
                                     {% else %}
@@ -131,13 +125,10 @@
                                                     <form method="POST" action="{% url 'booking:edit_food' food.id %}">
                                                         {% csrf_token %}
                                                         <div class="form-group">
-                                                            <label for="base_price">Base Price:</label>
-                                                            <input type="number" class="form-control" id="base_price" name="base_price">
+                                                            <label for="price">Price:</label>
+                                                            <input type="number" class="form-control" id="price" name="price">
                                                         </div>
-                                                        <div class="form-group">
-                                                            <label for="discount">Discount(%):</label>
-                                                            <input type="number" class="form-control" id="discount" name="discount">
-                                                        </div>
+                                                        
                                                         <div class="checkbox">
                                                             <label>
                                                                 <input type="checkbox" name="disabled" {% ifequal food.status 'Disabled' %}checked{% endifequal %}>Not Available

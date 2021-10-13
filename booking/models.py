@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
-from cloudinary.models import CloudinaryField
+
 
 class Customer(models.Model):
     pending = 'Pending'
@@ -158,7 +158,7 @@ class DeliveryBoy(models.Model):
 class Post(models.Model):
   title = models.CharField(max_length=144)
   description = models.TextField()
-  image = CloudinaryField('image')
+  image = models.ImageField('image')
   posted_on = models.DateTimeField(auto_now_add=True)
   user = models.ForeignKey(User,on_delete = models.CASCADE)
   
