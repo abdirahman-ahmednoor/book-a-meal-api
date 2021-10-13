@@ -139,7 +139,7 @@ def edit_food(request, foodID):
         # if request.POST['discount'] != "":
         #     food.discount = request.POST['discount'] 
         
-        food.sale_price = (100 - float(food.discount))*float(food.price)/100
+        # food.sale_price = (100 - float(food.discount))*float(food.price)/100
 
         status = request.POST.get('disabled')
         print(status)
