@@ -15,6 +15,9 @@ import django_heroku
 import dj_database_url
 from decouple import config,Csv
 from pathlib import Path
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,7 +31,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'd8iqeb%#u45bs8yl33@$&x(^l3=&tcjg%+1gank_2%-=bfzfo#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -46,6 +49,8 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'booking',
     'rest_framework',
+    'otpverification',
+    'cloudinary'
 ]
 
 MIDDLEWARE = [
@@ -167,6 +172,13 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 django_heroku.settings(locals())
+
+
+cloudinary.config( 
+  cloud_name = "dohcjt1gt", 
+  api_key = "663935144137727", 
+  api_secret = "Unqgy11Txqnb2rzS_iAMLjLnz3A" 
+)
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
