@@ -184,3 +184,5 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT =587
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+
+CLOUDINARY_URL='cloudinary://663935144137727:Unqgy11Txqnb2rzS_iAMLjLnz3A@dohcjt1gt'
