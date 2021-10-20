@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'booking',
     'rest_framework',
-    'cloudinary'
+    'cloudinary',
 ]
 
 MIDDLEWARE = [

@@ -180,7 +180,7 @@ class Food(models.Model):
     status = models.CharField(max_length=50, choices=STATUS)
     content_description = models.TextField()
     price = models.FloatField()
-    image = models.CloudinaryField('image')
+    image =CloudinaryField('image')
     location = models.CharField(max_length=200, blank=True, null=True)
     num_order = models.IntegerField(default=0)
 
