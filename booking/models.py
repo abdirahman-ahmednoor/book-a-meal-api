@@ -174,7 +174,7 @@ class Food(models.Model):
         (disabled, disabled),
         (enabled, enabled),
     )
-
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=250)
     course = models.CharField(max_length = 50, choices = COURSE)
     status = models.CharField(max_length=50, choices=STATUS)
@@ -206,6 +206,9 @@ class OrderContent(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
 
 class Cart(models.Model):
+    id = models.AutoField(primary_key=True)
+    image = CloudinaryField('image')
+    amount = models.IntegerField(default=1)
     quantity = models.IntegerField(default=1)
     food = models.ForeignKey(Food, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
