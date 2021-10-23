@@ -83,7 +83,7 @@ class CustomerSerializer(serializers.ModelSerializer):
 
 class FoodSerializer(serializers.ModelSerializer):
     class Meta:
-        fields =('name', 'course', 'status', 'price', 'image', 'num_order', 'content_description', 'location')
+        fields =('id','name', 'course', 'status', 'price', 'image', 'num_order', 'content_description', 'location')
         model = Food
 
 class StaffSerializer(serializers.ModelSerializer):
@@ -113,7 +113,7 @@ class OrderContentSerializer(serializers.ModelSerializer):
 
 class CartSerializer(serializers.ModelSerializer):
     class Meta:
-        fields =('food','user')
+        fields =('id','image','amount','food','user')
         model = Cart
 
 class DeliveryBoySerializer(serializers.ModelSerializer):
