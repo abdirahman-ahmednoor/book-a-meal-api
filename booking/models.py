@@ -70,7 +70,7 @@ class Customer(models.Model):
         (pending,pending),
         (verified,verified),
     )
-
+    id = models.AutoField(primary_key=True)
     customer = models.ForeignKey(User, on_delete=models.CASCADE)
     address = models.TextField()
     contact = models.CharField(max_length = 10)
@@ -201,6 +201,7 @@ class Data(models.Model):
     expenses = models.IntegerField()
 
 class OrderContent(models.Model):
+    id = models.AutoField(primary_key=True)
     quantity = models.IntegerField(default=1)
     food = models.ForeignKey(Food, on_delete=models.CASCADE)
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
