@@ -78,7 +78,7 @@ class PostSerializer(serializers.ModelSerializer):
         model = Post
 class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
-        fields =('customer','address','contact','orders','total_sale')
+        fields =('id','customer','address','contact','orders','total_sale')
         model = Customer
 
 class FoodSerializer(serializers.ModelSerializer):
@@ -93,7 +93,7 @@ class StaffSerializer(serializers.ModelSerializer):
 
 class OrderSerializer(serializers.ModelSerializer):
     class Meta:
-        fields =('customer', 'order_timestamp', 'delivery_timestamp', 'payment_status', 'delivery_status', 'if_cancelled', 'total_amount', 'payment_method', 'location', 'delivery_boy')
+        fields =('id','customer', 'order_timestamp', 'delivery_timestamp', 'payment_status', 'delivery_status', 'if_cancelled', 'total_amount', 'payment_method', 'location', 'delivery_boy')
         model = Order
 
 class CommentSerializer(serializers.ModelSerializer):
