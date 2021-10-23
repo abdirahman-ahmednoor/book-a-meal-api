@@ -127,7 +127,7 @@ class Order(models.Model):
         (pickup, pickup),
         (delivery, delivery),
     )
-
+    id = models.AutoField(primary_key=True)
     customer = models.ForeignKey(Customer,on_delete=models.CASCADE)
     order_timestamp = models.CharField(max_length=100, blank=True)
     delivery_timestamp = models.CharField(max_length=100, blank=True)
